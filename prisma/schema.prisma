@@ -1,0 +1,360 @@
+// Divine Vision Ministry International — content and admin database.
+//
+// Bilingual strategy: every field a visitor reads exists as `<field>En` and
+// `<field>Fr`. French is nullable and falls back to English at read time, so the
+// site is never blank while translation is still being filled in. This beats a
+// translations join table at this size — one row is one sermon, in both
+// languages, editable on one admin screen.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+/// Single row, id "singleton". Everything the church can change about itself.
+model SiteSetting {
+  id        String @id @default("singleton")
+  name      String
+  shortName String
+
+  taglineEn     String
+  taglineFr     String?
+  descriptionEn String
+  descriptionFr String?
+
+  logoUrl String?
+
+  addressLine  String
+  city         String
+  region       String?
+  country      String
+  addressNoteEn String?
+  addressNoteFr String?
+  latitude     Float?
+  longitude    Float?
+
+  phone String?
+  /// Digits only, international format without "+". Used to build wa.me links.
+  whatsapp String?
+  email    String?
+
+  /// IANA timezone. Drives the live banner and the next-service line.
+  timezone String @default("Africa/Douala")
+  currency String @default("XAF")
+
+  livestreamEmbedUrl   String?
+  livestreamChannelUrl String?
+  /// Manual override for a special service outside the normal schedule.
+  forceLive            Boolean @default(false)
+
+  givingBlurbEn String?
+  givingBlurbFr String?
+  /// Mobile Money and bank details, shown on the giving page for direct gifts.
+  momoMtn           String?
+  momoOrange        String?
+  momoAccountName   String?
+  bankName          String?
+  bankAccountName   String?
+  bankAccountNumber String?
+
+  facebookUrl  String?
+  youtubeUrl   String?
+  instagramUrl String?
+  tiktokUrl    String?
+
+  updatedAt DateTime @updatedAt
+}
+
+model ServiceTime {
+  id String @id @default(cuid())
+
+  labelEn String
+  labelFr String?
+
+  /// 0 = Sunday, matching Date.prototype.getDay().
+  dayOfWeek Int
+  /// "HH:MM", 24-hour, in the church's timezone.
+  startTime String
+  endTime   String?
+
+  noteEn   String?
+  noteFr   String?
+  location String?
+
+  sortOrder Int @default(0)
+
+  @@index([dayOfWeek, startTime])
+}
+
+model Speaker {
+  id   String @id @default(cuid())
+  slug String @unique
+  name String
+
+  roleEn String?
+  roleFr String?
+  bioEn  String?
+  bioFr  String?
+
+  photoUrl String?
+
+  sermons    Sermon[]
+  ministries Ministry[]
+}
+
+model Series {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  titleEn       String
+  titleFr       String?
+  descriptionEn String?
+  descriptionFr String?
+
+  imageUrl   String?
+  imageAltEn String?
+  imageAltFr String?
+
+  startDate DateTime?
+  endDate   DateTime?
+
+  sermons Sermon[]
+}
+
+model Sermon {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  titleEn   String
+  titleFr   String?
+  summaryEn String?
+  summaryFr String?
+
+  date DateTime
+
+  speakerId String?
+  speaker   Speaker? @relation(fields: [speakerId], references: [id], onDelete: SetNull)
+  seriesId  String?
+  series    Series?  @relation(fields: [seriesId], references: [id], onDelete: SetNull)
+
+  /// Free-text passage references, e.g. ["Colossians 1:15-20"].
+  scriptures String[] @default([])
+
+  imageUrl   String?
+  /// Alt text for screen readers. A person's photo needs none — their name is
+  /// the alt — but a scene does.
+  imageAltEn String?
+  imageAltFr String?
+  videoUrl String?
+  /// Direct MP3 link. Required for the sermon to enter the podcast feed.
+  audioUrl String?
+  durationSeconds Int?
+  audioByteLength Int?
+
+  transcriptEn String?
+  transcriptFr String?
+
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([date])
+  @@index([published, date])
+}
+
+model Event {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  titleEn       String
+  titleFr       String?
+  summaryEn     String?
+  summaryFr     String?
+  descriptionEn String?
+  descriptionFr String?
+
+  start DateTime
+  end   DateTime?
+
+  /// Plain words: "Every Wednesday". Empty for a one-off.
+  recurrenceEn String?
+  recurrenceFr String?
+
+  category String?
+  location String?
+  address  String?
+  imageUrl   String?
+  imageAltEn String?
+  imageAltFr String?
+
+  registrationEnabled Boolean   @default(false)
+  capacity            Int?
+  registrationClosesAt DateTime?
+  externalUrl         String?
+
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  registrations EventRegistration[]
+
+  @@index([start])
+  @@index([published, start])
+}
+
+model Ministry {
+  id   String @id @default(cuid())
+  slug String @unique
+
+  titleEn       String
+  titleFr       String?
+  summaryEn     String
+  summaryFr     String?
+  descriptionEn String?
+  descriptionFr String?
+
+  audienceEn    String?
+  audienceFr    String?
+  meetingTimeEn String?
+  meetingTimeFr String?
+
+  imageUrl   String?
+  imageAltEn String?
+  imageAltFr String?
+
+  leaderId String?
+  leader   Speaker? @relation(fields: [leaderId], references: [id], onDelete: SetNull)
+
+  sortOrder Int @default(0)
+}
+
+model StaffMember {
+  id   String @id @default(cuid())
+  name String
+
+  roleEn String
+  roleFr String?
+  bioEn  String?
+  bioFr  String?
+
+  photoUrl String?
+  email    String?
+
+  sortOrder Int @default(0)
+}
+
+model Belief {
+  id String @id @default(cuid())
+
+  titleEn String
+  titleFr String?
+  bodyEn  String
+  bodyFr  String?
+
+  sortOrder Int @default(0)
+}
+
+model VisitFaq {
+  id String @id @default(cuid())
+
+  questionEn String
+  questionFr String?
+  answerEn   String
+  answerFr   String?
+
+  sortOrder Int @default(0)
+}
+
+// --- Written by the website, read by the pastoral team ----------------------
+
+model PrayerRequest {
+  id      String  @id @default(cuid())
+  name    String?
+  email   String?
+  phone   String?
+  request String
+
+  /// True keeps it with the pastoral team rather than the wider prayer team.
+  isPrivate    Boolean @default(true)
+  wantsContact Boolean @default(false)
+
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([handled, createdAt])
+}
+
+model ContactMessage {
+  id      String  @id @default(cuid())
+  name    String
+  email   String
+  phone   String?
+  subject String?
+  message String
+
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([handled, createdAt])
+}
+
+model EventRegistration {
+  id      String  @id @default(cuid())
+  eventId String?
+  event   Event?  @relation(fields: [eventId], references: [id], onDelete: SetNull)
+  /// Kept as text too, so a deleted event does not orphan the record.
+  eventTitle String
+
+  name   String
+  email  String
+  phone  String?
+  guests Int     @default(1)
+  notes  String?
+
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([eventId, createdAt])
+}
+
+/// One row per attempted gift. Written before redirect, updated by the webhook.
+model Donation {
+  id String @id @default(cuid())
+  /// Our own reference, sent to the gateway and echoed back.
+  reference String @unique
+
+  /// Minor-unit-free amount. XAF has no subunit, so this is whole francs.
+  amount   Int
+  currency String @default("XAF")
+  fund     String @default("general")
+
+  donorName  String?
+  donorEmail String?
+  donorPhone String?
+
+  recurring Boolean @default(false)
+
+  /// PENDING | SUCCESSFUL | FAILED | CANCELLED
+  status      String  @default("PENDING")
+  provider    String  @default("flutterwave")
+  providerRef String?
+  /// Channel reported by the gateway: mobilemoneymtn, card, etc.
+  channel     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, createdAt])
+}

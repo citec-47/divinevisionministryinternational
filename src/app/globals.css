@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* Class-based dark mode so the header toggle can override the OS preference. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+
+  --ground: #fbf9f6;
+  --surface: #ffffff;
+  --surface-2: #f4f1ec;
+  --ink: #16181d;
+  --ink-muted: #5a6270;
+  --ink-faint: #8a919d;
+  --line: #e6e1d8;
+
+  --brand: #1b2a4a;
+  --brand-soft: #2c4275;
+  --brand-contrast: #ffffff;
+
+  --accent: #a9722a;
+  --accent-soft: #c08a3e;
+  --accent-contrast: #ffffff;
+
+  --live: #c0392b;
+  --ring: #2c4275;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --ground: #0e1116;
+  --surface: #161a21;
+  --surface-2: #1e232c;
+  --ink: #e9e6e0;
+  --ink-muted: #a2a9b6;
+  --ink-faint: #79808d;
+  --line: #2a2f39;
+
+  --brand: #c3d2f0;
+  --brand-soft: #9db2e0;
+  --brand-contrast: #0e1116;
+
+  --accent: #d9a85c;
+  --accent-soft: #e5bd7d;
+  --accent-contrast: #17130c;
+
+  --live: #e8705f;
+  --ring: #9db2e0;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-contrast: var(--brand-contrast);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-live: var(--live);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  --radius-card: 0.875rem;
+}
+
+* {
+  border-color: var(--line);
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Visible, consistent focus for keyboard users (WCAG 2.2 AA). */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-contrast);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@utility display-balance {
+  text-wrap: balance;
+}
