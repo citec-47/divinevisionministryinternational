@@ -4,7 +4,7 @@ import { getSettings } from "@/lib/content";
 import { isLocale } from "@/lib/i18n";
 
 /**
- * The card people see when the site is shared into WhatsApp — which, in
+ * The card people see when the site is shared into WhatsApp, which, in
  * Cameroon, is how most links actually travel.
  */
 export const alt = "Divine Vision Ministry International";

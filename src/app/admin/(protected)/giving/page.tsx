@@ -27,7 +27,7 @@ export default async function AdminGivingPage() {
     <div className="space-y-8">
       <AdminHeader
         title="Giving"
-        description="Gifts given through the website. Mobile Money sent directly to your MTN or Orange number does not appear here — only online checkout does."
+        description="Gifts given through the website. Mobile Money sent directly to your MTN or Orange number does not appear here, only online checkout does."
       />
 
       {!isFlutterwaveConfigured() ? (
@@ -75,9 +75,9 @@ export default async function AdminGivingPage() {
               </td>
               <td className="px-5 py-3 text-ink-muted">{donation.fund}</td>
               <td className="px-5 py-3 text-ink-muted">
-                {donation.donorName ?? donation.donorEmail ?? "—"}
+                {donation.donorName ?? donation.donorEmail ?? "-"}
               </td>
-              <td className="px-5 py-3 text-ink-muted">{donation.channel ?? "—"}</td>
+              <td className="px-5 py-3 text-ink-muted">{donation.channel ?? "-"}</td>
               <td className="px-5 py-3">
                 <StatusPill ok={donation.status === "SUCCESSFUL"}>{donation.status}</StatusPill>
               </td>

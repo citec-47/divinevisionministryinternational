@@ -13,7 +13,7 @@ import { absoluteUrl, escapeXml, formatDurationClock, siteUrl } from "@/lib/util
  * a bilingual feed would be rejected; if the church later wants a French feed,
  * it should be a second show at its own URL.
  *
- * Only sermons with an audio file are included — a podcast entry with no
+ * Only sermons with an audio file are included, a podcast entry with no
  * enclosure is rejected by most directories.
  */
 export const revalidate = 3600;
@@ -56,7 +56,7 @@ export async function GET() {
   xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
   xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${escapeXml(`${settings.name} — Sermons`)}</title>
+    <title>${escapeXml(`${settings.name} Sermons`)}</title>
     <link>${escapeXml(siteUrl())}</link>
     <atom:link href="${escapeXml(feedUrl)}" rel="self" type="application/rss+xml"/>
     <language>en</language>

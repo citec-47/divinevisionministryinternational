@@ -3,8 +3,8 @@ import type { Locale } from "./i18n";
 /**
  * UI strings for the site chrome and page furniture.
  *
- * Everything a church actually edits week to week — sermons, events, service
- * times, ministries — lives in the database, not here. This file holds only the
+ * Everything a church actually edits week to week (sermons, events, service
+ * times, ministries) lives in the database, not here. This file holds only the
  * words that never change between one Sunday and the next.
  *
  * `en` is the source of truth for the shape; `fr` must match it, and TypeScript
@@ -64,7 +64,7 @@ const en = {
     ourChannel: "Our channel",
     title: "Worship with us from wherever you are",
     intro:
-      "Travelling, unwell, or trying us out before you visit — you are just as welcome on the stream as you are in the room.",
+      "Travelling, unwell, or trying us out before you visit? You are just as welcome on the stream as you are in the room.",
     missedSunday: "Missed Sunday?",
     mostRecent: "The most recent message",
     allSermons: "All sermons",
@@ -99,7 +99,7 @@ const en = {
     outreachEyebrow: "Our hands in the city",
     outreachTitle: "Faith that shows up with rice and soap",
     outreachIntro:
-      "Our outreach team takes food and supplies to orphanages and families across Yaoundé. This is not a side project — it is what we believe, carried in our hands.",
+      "Our outreach team takes food and supplies to orphanages and families across Yaoundé. This is not a side project. It is what we believe, carried in our hands.",
     outreachCta: "Join an outreach",
     highlights: [
       {
@@ -119,7 +119,7 @@ const en = {
   visit: {
     title: "You are welcome here, exactly as you are",
     intro:
-      "Walking into a church for the first time takes something. So here is everything ahead of time — where to go, what happens, and how long it takes — with no surprises waiting for you.",
+      "Walking into a church for the first time takes something. So here is everything ahead of time: where to go, what happens, and how long it takes, with no surprises waiting for you.",
     whenYouArrive: "When you arrive",
     firstTenMinutes: "The first ten minutes",
     firstTenIntro: "What actually happens between arriving and the music starting.",
@@ -127,7 +127,7 @@ const en = {
     questionsAsked: "Questions people actually ask",
     stillHaveQuestion: "Still have a question?",
     stillHaveQuestionBody:
-      "Ask us anything before you come — about accessibility, your children, or anything else. A real person will reply.",
+      "Ask us anything before you come, about accessibility, your children, or anything else. A real person will reply.",
     getInTouch: "Get in touch",
     watchFirst: "Watch first, online",
     steps: [
@@ -173,7 +173,7 @@ const en = {
   sermons: {
     title: "Teaching you can come back to",
     intro:
-      "Watch, listen, or read. Every message is searchable — including the transcripts, so a half-remembered line is enough to find it again.",
+      "Watch, listen, or read. Every message is searchable, including the transcripts, so a half-remembered line is enough to find it again.",
     subscribe: "Subscribe to the podcast",
     search: "Search sermons",
     searchPlaceholder: "Search titles, passages, speakers, transcripts",
@@ -202,7 +202,7 @@ const en = {
     beganOn: "began",
     noneInSeries: "No messages in this series yet",
     noneInSeriesBody:
-      "Check back after Sunday — messages are published here as they are preached.",
+      "Check back after Sunday. Messages are published here as they are preached.",
   },
   events: {
     title: "What is coming up",
@@ -236,7 +236,7 @@ const en = {
   ministries: {
     title: "Find your people",
     intro:
-      "Sunday is where we gather. These are the places where people at Divine Vision are actually known — by name, week to week.",
+      "Sunday is where we gather. These are the places where people at Divine Vision are actually known by name, week to week.",
     beingAdded: "Ministries are being added",
     beingAddedBody:
       "Get in touch and we will point you to the right group in person.",
@@ -252,7 +252,7 @@ const en = {
     otherMinistries: "Other ministries",
     getInTouchForDate: "Get in touch and we will let you know the next date.",
     comeAndSee:
-      "Come along and see what this looks like in person — or ask us anything first. There is no wrong way to start.",
+      "Come along and see what this looks like in person, or ask us anything first. There is no wrong way to start.",
   },
   give: {
     title: "Generosity that keeps this church going",
@@ -318,7 +318,7 @@ const en = {
       "You do not have to be a member, and you do not have to explain yourself. Tell us what you can, and our team will pray.",
     whoReads: "Who reads this",
     whoReadsBody:
-      "Requests go to the pastoral team. If you tick the private box, it stays with them. If you leave it unticked, it may be shared with our wider prayer team — always by first name only, and never published anywhere.",
+      "Requests go to the pastoral team. If you tick the private box, it stays with them. If you leave it unticked, it may be shared with our wider prayer team, always by first name only, and never published anywhere.",
     ifUrgent: "If it is urgent",
     ifUrgentBody:
       "This form is checked during office hours, not around the clock. If you need to speak to someone today, please call or message us on WhatsApp.",
@@ -328,7 +328,7 @@ const en = {
   contact: {
     title: "Talk to a real person",
     intro:
-      "Questions about visiting, your children, accessibility, weddings, funerals, or anything else — the church office reads every message.",
+      "Questions about visiting, your children, accessibility, weddings, funerals, or anything else. The church office reads every message.",
     reachUs: "Reach us directly",
     whatsapp: "WhatsApp",
     phone: "Phone",
@@ -376,7 +376,7 @@ const en = {
     prayerSuccess:
       "Thank you. Someone on the pastoral team will pray over this, and will be in touch if you asked us to be.",
     contactSuccess:
-      "Thank you — your message is with the church office. We usually reply within two days.",
+      "Thank you. Your message is with the church office. We usually reply within two days.",
     registrationSuccess: "You are registered. We will be in touch before the day.",
     leaveEmpty: "Leave this field empty",
   },
@@ -448,7 +448,7 @@ const fr: typeof en = {
     ourChannel: "Notre chaîne",
     title: "Adorez avec nous, où que vous soyez",
     intro:
-      "En voyage, souffrant, ou simplement curieux avant de venir — vous êtes aussi bienvenu en ligne que dans la salle.",
+      "En voyage, souffrant, ou simplement curieux avant de venir ? Vous êtes aussi bienvenu en ligne que dans la salle.",
     missedSunday: "Vous avez manqué dimanche ?",
     mostRecent: "La prédication la plus récente",
     allSermons: "Toutes les prédications",
@@ -484,7 +484,7 @@ const fr: typeof en = {
     outreachEyebrow: "Nos mains dans la ville",
     outreachTitle: "Une foi qui arrive avec du riz et du savon",
     outreachIntro:
-      "Notre équipe d’action sociale apporte vivres et fournitures aux orphelinats et aux familles de Yaoundé. Ce n’est pas un projet annexe — c’est notre foi, portée à bout de bras.",
+      "Notre équipe d’action sociale apporte vivres et fournitures aux orphelinats et aux familles de Yaoundé. Ce n’est pas un projet annexe. C’est notre foi, portée à bout de bras.",
     outreachCta: "Rejoindre une action",
     highlights: [
       {
@@ -504,7 +504,7 @@ const fr: typeof en = {
   visit: {
     title: "Vous êtes le bienvenu, exactement tel que vous êtes",
     intro:
-      "Entrer dans une église pour la première fois demande du courage. Voici donc tout à l’avance — où aller, ce qui se passe, et combien de temps cela dure — sans aucune surprise.",
+      "Entrer dans une église pour la première fois demande du courage. Voici donc tout à l’avance : où aller, ce qui se passe, et combien de temps cela dure, sans aucune surprise.",
     whenYouArrive: "À votre arrivée",
     firstTenMinutes: "Les dix premières minutes",
     firstTenIntro:
@@ -513,7 +513,7 @@ const fr: typeof en = {
     questionsAsked: "Les questions que l’on nous pose vraiment",
     stillHaveQuestion: "Une autre question ?",
     stillHaveQuestionBody:
-      "Posez-nous n’importe quelle question avant de venir — accessibilité, enfants, ou autre. Une vraie personne vous répondra.",
+      "Posez-nous n’importe quelle question avant de venir : accessibilité, enfants, ou autre. Une vraie personne vous répondra.",
     getInTouch: "Nous contacter",
     watchFirst: "Regarder d’abord en ligne",
     steps: [
@@ -559,7 +559,7 @@ const fr: typeof en = {
   sermons: {
     title: "Un enseignement sur lequel revenir",
     intro:
-      "Regardez, écoutez ou lisez. Chaque prédication est consultable — transcriptions comprises, une phrase à moitié retenue suffit à la retrouver.",
+      "Regardez, écoutez ou lisez. Chaque prédication est consultable, transcriptions comprises. Une phrase à moitié retenue suffit à la retrouver.",
     subscribe: "S’abonner au podcast",
     search: "Rechercher une prédication",
     searchPlaceholder: "Titres, passages, prédicateurs, transcriptions",
@@ -589,7 +589,7 @@ const fr: typeof en = {
     beganOn: "commencée le",
     noneInSeries: "Aucune prédication dans cette série",
     noneInSeriesBody:
-      "Revenez après dimanche — les prédications sont publiées au fil des cultes.",
+      "Revenez après dimanche. Les prédications sont publiées au fil des cultes.",
   },
   events: {
     title: "Ce qui arrive",
@@ -624,7 +624,7 @@ const fr: typeof en = {
   ministries: {
     title: "Trouvez les vôtres",
     intro:
-      "Le dimanche, nous nous rassemblons. Voici les lieux où l’on connaît vraiment les gens à Divine Vision — par leur nom, semaine après semaine.",
+      "Le dimanche, nous nous rassemblons. Voici les lieux où l’on connaît vraiment les gens à Divine Vision, par leur nom, semaine après semaine.",
     beingAdded: "Les ministères arrivent bientôt",
     beingAddedBody:
       "Contactez-nous et nous vous orienterons vers le bon groupe en personne.",
@@ -640,7 +640,7 @@ const fr: typeof en = {
     otherMinistries: "Autres ministères",
     getInTouchForDate: "Contactez-nous et nous vous donnerons la prochaine date.",
     comeAndSee:
-      "Venez voir ce que cela donne en vrai — ou posez-nous vos questions d’abord. Il n’y a pas de mauvaise façon de commencer.",
+      "Venez voir ce que cela donne en vrai, ou posez-nous vos questions d’abord. Il n’y a pas de mauvaise façon de commencer.",
   },
   give: {
     title: "Une générosité qui fait vivre cette église",
@@ -706,7 +706,7 @@ const fr: typeof en = {
       "Vous n’avez pas besoin d’être membre, ni de vous justifier. Dites-nous ce que vous pouvez, et notre équipe priera.",
     whoReads: "Qui lit ces demandes",
     whoReadsBody:
-      "Les demandes vont à l’équipe pastorale. Si vous cochez la case privée, elles restent avec eux. Sinon, elles peuvent être partagées avec notre équipe de prière — toujours par prénom seulement, et jamais publiées.",
+      "Les demandes vont à l’équipe pastorale. Si vous cochez la case privée, elles restent avec eux. Sinon, elles peuvent être partagées avec notre équipe de prière, toujours par prénom seulement, et jamais publiées.",
     ifUrgent: "En cas d’urgence",
     ifUrgentBody:
       "Ce formulaire est consulté aux heures de bureau, pas en continu. Si vous devez parler à quelqu’un aujourd’hui, appelez-nous ou écrivez-nous sur WhatsApp.",
@@ -716,7 +716,7 @@ const fr: typeof en = {
   contact: {
     title: "Parlez à une vraie personne",
     intro:
-      "Questions sur une visite, vos enfants, l’accessibilité, un mariage, des funérailles ou autre — le secrétariat lit chaque message.",
+      "Questions sur une visite, vos enfants, l’accessibilité, un mariage, des funérailles ou autre. Le secrétariat lit chaque message.",
     reachUs: "Nous joindre directement",
     whatsapp: "WhatsApp",
     phone: "Téléphone",
@@ -764,7 +764,7 @@ const fr: typeof en = {
     prayerSuccess:
       "Merci. Un membre de l’équipe pastorale priera pour cela, et vous recontactera si vous l’avez demandé.",
     contactSuccess:
-      "Merci — votre message est bien arrivé au secrétariat. Nous répondons généralement sous deux jours.",
+      "Merci. Votre message est bien arrivé au secrétariat. Nous répondons généralement sous deux jours.",
     registrationSuccess: "Vous êtes inscrit. Nous vous recontacterons avant le jour J.",
     leaveEmpty: "Laissez ce champ vide",
   },

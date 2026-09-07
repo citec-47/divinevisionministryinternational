@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 /**
  * Confirms the outcome of a gift.
  *
- * The redirect parameters are a hint, never proof — anyone can type them into
+ * The redirect parameters are a hint, never proof, because anyone can type them into
  * the address bar. The transaction is re-verified against Flutterwave, and the
  * amount and currency are checked against the Donation row we wrote before the
  * redirect, before this page will say "thank you".

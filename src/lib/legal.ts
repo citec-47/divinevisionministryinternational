@@ -5,7 +5,7 @@ import type { Locale } from "./i18n";
  * long-form prose that a lawyer may rewrite wholesale, not interface labels.
  *
  * The privacy text is a starting point drafted around what this site actually
- * collects — it is not legal advice, and the page says so.
+ * collects. It is not legal advice, and the page says so.
  */
 export type LegalSection = { heading: string; paragraphs: string[]; bullets?: string[] };
 export type LegalPage = { title: string; intro?: string; notice?: string; sections: LegalSection[] };
@@ -19,10 +19,10 @@ const privacyEn: LegalPage = {
       heading: "What we collect",
       paragraphs: ["We only collect what you choose to give us through a form on this site:"],
       bullets: [
-        "Prayer requests — your request, and your name and contact details if you provide them.",
-        "Messages to the office — your name, email, phone number if given, and what you wrote.",
-        "Event registrations — your name, contact details, party size, and any notes you add.",
-        "Giving — handled by Flutterwave. Your card or Mobile Money details never reach this website.",
+        "Prayer requests: your request, and your name and contact details if you provide them.",
+        "Messages to the office: your name, email, phone number if given, and what you wrote.",
+        "Event registrations: your name, contact details, party size, and any notes you add.",
+        "Giving: handled by Flutterwave. Your card or Mobile Money details never reach this website.",
       ],
     },
     {
@@ -70,10 +70,10 @@ const privacyFr: LegalPage = {
         "Nous ne collectons que ce que vous choisissez de nous donner via un formulaire de ce site :",
       ],
       bullets: [
-        "Demandes de prière — votre demande, ainsi que votre nom et vos coordonnées si vous les fournissez.",
-        "Messages au secrétariat — votre nom, e-mail, téléphone le cas échéant, et votre message.",
-        "Inscriptions aux événements — nom, coordonnées, nombre de participants et remarques éventuelles.",
-        "Dons — traités par Flutterwave. Vos données de carte ou de Mobile Money ne transitent jamais par ce site.",
+        "Demandes de prière : votre demande, ainsi que votre nom et vos coordonnées si vous les fournissez.",
+        "Messages au secrétariat : votre nom, e-mail, téléphone le cas échéant, et votre message.",
+        "Inscriptions aux événements : nom, coordonnées, nombre de participants et remarques éventuelles.",
+        "Dons : traités par Flutterwave. Vos données de carte ou de Mobile Money ne transitent jamais par ce site.",
       ],
     },
     {
@@ -141,7 +141,7 @@ const accessibilityEn: LegalPage = {
     {
       heading: "Tell us",
       paragraphs: [
-        "If something here does not work for you, we want to know — it is a fault on our side, not yours. Message the church and we will fix it and reply to you.",
+        "If something here does not work for you, we want to know. It is a fault on our side, not yours. Message the church and we will fix it and reply to you.",
       ],
     },
   ],
@@ -178,7 +178,7 @@ const accessibilityFr: LegalPage = {
     {
       heading: "Dites-le-nous",
       paragraphs: [
-        "Si quelque chose ici ne fonctionne pas pour vous, nous voulons le savoir — la faute est de notre côté, pas du vôtre. Écrivez à l’église : nous corrigerons et nous vous répondrons.",
+        "Si quelque chose ici ne fonctionne pas pour vous, nous voulons le savoir. La faute est de notre côté, pas du vôtre. Écrivez à l’église : nous corrigerons et nous vous répondrons.",
       ],
     },
   ],

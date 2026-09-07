@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
  * effort better spent on the pages visitors actually read.
  */
 export const metadata: Metadata = {
-  title: "Admin — Divine Vision",
+  title: "Admin | Divine Vision",
   robots: { index: false, follow: false },
 };
 

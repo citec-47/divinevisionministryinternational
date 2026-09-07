@@ -25,7 +25,7 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Freq }[]
 
 /**
  * Every URL is listed once per language, and each entry declares the other
- * language as an alternate — that is what stops search engines treating the
+ * language as an alternate, that is what stops search engines treating the
  * English and French versions as duplicate content.
  */
 function alternates(path: string) {

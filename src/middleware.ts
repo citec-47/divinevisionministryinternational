@@ -7,7 +7,7 @@ import { DEFAULT_LOCALE, LOCALES, localeFromAcceptLanguage } from "@/lib/i18n";
  *
  * Cameroon is bilingual, so guessing well matters: we read Accept-Language and
  * send a French browser to /fr and everyone else to /en. The choice is only a
- * redirect, never a lock — the language switcher in the header rewrites the
+ * redirect, never a lock. The language switcher in the header rewrites the
  * path, so anyone can override it in one tap.
  */
 const PUBLIC_FILE = /\.[^/]+$/;

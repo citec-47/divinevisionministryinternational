@@ -42,7 +42,7 @@ export default async function AdminSermonsPage() {
                   year: "numeric",
                 })}
               </td>
-              <td className="px-5 py-3 text-ink-muted">{sermon.speaker?.name ?? "—"}</td>
+              <td className="px-5 py-3 text-ink-muted">{sermon.speaker?.name ?? "-"}</td>
               <td className="px-5 py-3">
                 <div className="flex gap-1.5">
                   <StatusPill ok={Boolean(sermon.videoUrl)}>Video</StatusPill>

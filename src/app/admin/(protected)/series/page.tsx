@@ -32,7 +32,7 @@ export default async function AdminSeriesPage() {
                       month: "short",
                       year: "numeric",
                     })
-                  : "—"}
+                  : "-"}
               </td>
               <td className="px-5 py-3 text-right">
                 <Link
@@ -48,7 +48,7 @@ export default async function AdminSeriesPage() {
       ) : (
         <AdminEmpty
           title="No series yet"
-          description="A series is optional — a sermon can stand on its own. Create one when you start preaching through a book or a theme."
+          description="A series is optional, because a sermon can stand on its own. Create one when you start preaching through a book or a theme."
           action={<PrimaryLink href="/admin/series/new">Add a series</PrimaryLink>}
         />
       )}

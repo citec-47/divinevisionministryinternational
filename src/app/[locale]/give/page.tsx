@@ -84,7 +84,7 @@ export default async function GivePage({
                 {whatsapp ? (
                   <>
                     {" "}
-                    —{" "}
+                    ·{" "}
                     <a
                       href={whatsapp}
                       target="_blank"

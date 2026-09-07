@@ -248,7 +248,7 @@ export function SettingsForm({ values }: { values: SettingsValues }) {
         </div>
 
         <p className="text-xs text-ink-faint">
-          Anything you leave blank is simply hidden on the giving page — nothing empty is
+          Anything you leave blank is simply hidden on the giving page, and nothing empty is
           ever shown to a visitor.
         </p>
       </AdminCard>

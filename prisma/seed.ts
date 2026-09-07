@@ -3,7 +3,7 @@
  *
  * Deliberately conservative: the church's identity, its pastor, its outreach,
  * and generic-but-editable material (statement of faith, visitor questions) are
- * seeded. Sermons and events are NOT — inventing a sermon title or an event date
+ * seeded. Sermons and events are NOT, because inventing a sermon title or an event date
  * for a real church would put a falsehood on a public website. Those start empty
  * and the site's empty states handle it honestly.
  *
@@ -50,13 +50,14 @@ async function seedSettings() {
       "Écrivez-nous sur WhatsApp et nous vous enverrons l’itinéraire et un point de repère.",
 
     whatsapp: "237672916120",
+    email: "divinevisionministryinternatio@gmail.com",
     timezone: "Africa/Douala",
     currency: "XAF",
 
     givingBlurbEn:
-      "Every gift goes into the ministry of this church family — Sunday worship, our work with young people, and the food and supplies we take to orphanages across Yaoundé.",
+      "Every gift goes into the ministry of this church family: Sunday worship, our work with young people, and the food and supplies we take to orphanages across Yaoundé.",
     givingBlurbFr:
-      "Chaque don sert le ministère de cette famille — la louange du dimanche, notre travail auprès des jeunes, et les vivres que nous apportons aux orphelinats de Yaoundé.",
+      "Chaque don sert le ministère de cette famille : la louange du dimanche, notre travail auprès des jeunes, et les vivres que nous apportons aux orphelinats de Yaoundé.",
 
     // The church gave one number for both networks; correct in the admin if
     // the Orange Money line is different.
@@ -77,7 +78,7 @@ async function seedSettings() {
 }
 
 async function seedServiceTimes() {
-  // One Sunday morning gathering, per the church. Times are a starting point —
+  // One Sunday morning gathering, per the church. Times are a starting point,
   // the office should confirm them on the admin dashboard before launch.
   const sunday = {
     id: "service-sunday",
@@ -152,9 +153,9 @@ async function seedMinistries() {
       summaryFr:
         "Vivres, vêtements et fournitures apportés aux orphelinats et aux familles de Yaoundé.",
       descriptionEn:
-        "This is the part of our life together that happens outside the building. We buy rice, oil, soap and household supplies, and we take them where they are needed — orphanages, widows, families having a hard month.\n\nYou do not need to be a member to come with us. If you can carry a bag, you can serve.",
+        "This is the part of our life together that happens outside the building. We buy rice, oil, soap and household supplies, and we take them where they are needed: orphanages, widows, families having a hard month.\n\nYou do not need to be a member to come with us. If you can carry a bag, you can serve.",
       descriptionFr:
-        "C’est la part de notre vie commune qui se passe hors des murs. Nous achetons riz, huile, savon et produits ménagers, et nous les apportons là où ils manquent — orphelinats, veuves, familles en difficulté.\n\nNul besoin d’être membre pour venir avec nous. Si vous pouvez porter un sac, vous pouvez servir.",
+        "C’est la part de notre vie commune qui se passe hors des murs. Nous achetons riz, huile, savon et produits ménagers, et nous les apportons là où ils manquent : orphelinats, veuves, familles en difficulté.\n\nNul besoin d’être membre pour venir avec nous. Si vous pouvez porter un sac, vous pouvez servir.",
       imageUrl: "/images/outreach-orphanage.jpeg",
       imageAltEn:
         "Prophet Emmanuel Ayuh and church members standing with children at an orphanage, beside donated rice, drinks and household supplies.",
@@ -384,7 +385,7 @@ async function seedAdmin() {
   }
 
   // Never invent a weak default. If none is supplied, mint a strong one and
-  // print it exactly once — this is the only time it can be read.
+  // print it exactly once. This is the only time it can be read.
   const password = process.env.ADMIN_PASSWORD ?? randomBytes(12).toString("base64url");
 
   await prisma.adminUser.create({
@@ -415,7 +416,7 @@ async function main() {
   await seedAdmin();
 
   console.log(
-    "\nSeeded. Sermons and events are intentionally empty — add real ones in /admin.",
+    "\nSeeded. Sermons and events are intentionally empty. Add real ones in /admin.",
   );
 }
 

@@ -106,7 +106,7 @@ export function EventForm({ values }: { values: EventFormValues }) {
             defaultValue={values.category}
             options={CATEGORIES.map((category) => ({
               value: category,
-              label: category || "— None —",
+              label: category || "(none)",
             }))}
             hint="Groups events into filters on the events page."
           />

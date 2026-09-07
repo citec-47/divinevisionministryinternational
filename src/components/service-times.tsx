@@ -11,7 +11,7 @@ import {
 } from "@/lib/utils";
 
 /**
- * When we meet and where — the two questions a first-time visitor has.
+ * When we meet and where: the two questions a first-time visitor has.
  *
  * Rendered on the server from database rows, so it is correct with JavaScript
  * off. Renders nothing at all when no service times have been entered, rather

@@ -12,8 +12,8 @@ import type { FormState } from "@/lib/form-state";
  * Admin server actions.
  *
  * Every mutating action calls `requireSession` first. The layout also gates the
- * pages, but a server action is a public endpoint in its own right — an
- * attacker can POST to it without ever loading the page — so the check belongs
+ * pages, but a server action is a public endpoint in its own right, an
+ * attacker can POST to it without ever loading the page, so the check belongs
  * here too, not only in the UI.
  */
 async function requireSession() {

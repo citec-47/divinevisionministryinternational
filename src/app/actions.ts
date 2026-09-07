@@ -9,8 +9,8 @@ import { notifyOffice } from "@/lib/notify";
 /**
  * Server actions for the site's three forms.
  *
- * Submissions are written to the database first — that is the record the
- * pastoral team works from in /admin — and an email notification is attempted
+ * Submissions are written to the database first, that is the record the
+ * pastoral team works from in /admin, and an email notification is attempted
  * afterwards. A failed email never loses the message.
  *
  * Spam handling is a honeypot field plus a minimum fill time. That stops the
@@ -90,7 +90,7 @@ export async function submitPrayerRequest(
     From: name || "Anonymous",
     Email: email,
     Phone: phone,
-    Private: isPrivate ? "yes — pastoral team only" : "no",
+    Private: isPrivate ? "yes, pastoral team only" : "no",
     "Wants contact": wantsContact ? "yes" : "no",
     Request: request,
   });
@@ -197,7 +197,7 @@ export async function submitEventRegistration(
     return { status: "error", message: t.deliveryFailed };
   }
 
-  await notifyOffice(`New registration — ${eventTitle}`, {
+  await notifyOffice(`New registration: ${eventTitle}`, {
     Event: eventTitle,
     Name: name,
     Email: email,

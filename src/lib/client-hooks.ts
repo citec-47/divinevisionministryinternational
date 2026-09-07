@@ -6,7 +6,7 @@ import { useSyncExternalStore } from "react";
  * Client-only values, subscribed to properly.
  *
  * The site is statically rendered, so "what time is it" and "which theme is on"
- * cannot be answered on the server — they would be frozen at build time. These
+ * cannot be answered on the server, they would be frozen at build time. These
  * hooks return a null/false server snapshot and the real value after hydration,
  * which is exactly what `useSyncExternalStore` is for. Doing it this way, rather
  * than with `setState` inside an effect, avoids the cascading render React now

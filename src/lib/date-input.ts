@@ -2,7 +2,7 @@
  * Formatting for `<input type="date">` and `<input type="datetime-local">`.
  *
  * Both expect a local wall-clock string with no timezone, so `toISOString()` is
- * wrong here — it would shift an evening service into the previous day for any
+ * wrong here, it would shift an evening service into the previous day for any
  * editor west of UTC. These build the string from local parts instead.
  */
 function pad(value: number): string {

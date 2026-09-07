@@ -1,11 +1,12 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { signOut } from "@/app/admin/actions";
+import { AdminSidebar, type NavGroup } from "@/components/admin/sidebar";
 import { getSession } from "@/lib/auth";
+import { prisma } from "@/lib/db";
 
 /**
- * The authentication gate for every admin page.
+ * The authentication gate and shell for every admin page.
  *
  * Server-side and non-negotiable: an unauthenticated request never renders a
  * child page at all. The server actions repeat the check independently, because
@@ -13,17 +14,20 @@ import { getSession } from "@/lib/auth";
  */
 export const dynamic = "force-dynamic";
 
-const NAV = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/sermons", label: "Sermons" },
-  { href: "/admin/series", label: "Series" },
-  { href: "/admin/events", label: "Events" },
-  { href: "/admin/ministries", label: "Ministries" },
-  { href: "/admin/service-times", label: "Service times" },
-  { href: "/admin/settings", label: "Church details" },
-  { href: "/admin/inbox", label: "Inbox" },
-  { href: "/admin/giving", label: "Giving" },
-];
+/** Anything waiting on a human, counted for the Inbox badge. */
+async function unhandledCount(): Promise<number> {
+  try {
+    const [prayer, messages, registrations] = await Promise.all([
+      prisma.prayerRequest.count({ where: { handled: false } }),
+      prisma.contactMessage.count({ where: { handled: false } }),
+      prisma.eventRegistration.count({ where: { handled: false } }),
+    ]);
+    return prayer + messages + registrations;
+  } catch {
+    // A badge is not worth failing the whole shell over.
+    return 0;
+  }
+}
 
 export default async function ProtectedLayout({
   children,
@@ -33,57 +37,45 @@ export default async function ProtectedLayout({
   const session = await getSession();
   if (!session) redirect("/admin/login");
 
+  const waiting = await unhandledCount();
+
+  const groups: NavGroup[] = [
+    {
+      heading: "Overview",
+      items: [{ href: "/admin", label: "Dashboard", icon: "dashboard" }],
+    },
+    {
+      heading: "Content",
+      items: [
+        { href: "/admin/sermons", label: "Sermons", icon: "sermons" },
+        { href: "/admin/series", label: "Series", icon: "series" },
+        { href: "/admin/events", label: "Events", icon: "events" },
+        { href: "/admin/ministries", label: "Ministries", icon: "ministries" },
+      ],
+    },
+    {
+      heading: "The church",
+      items: [
+        { href: "/admin/service-times", label: "Service times", icon: "clock" },
+        { href: "/admin/settings", label: "Church details", icon: "church" },
+      ],
+    },
+    {
+      heading: "People",
+      items: [
+        { href: "/admin/inbox", label: "Inbox", icon: "inbox", count: waiting },
+        { href: "/admin/giving", label: "Giving", icon: "giving" },
+      ],
+    },
+  ];
+
   return (
-    <div className="min-h-dvh bg-ground">
-      <header className="border-b border-line bg-surface">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-4">
-          <Link href="/admin" className="flex items-center gap-3">
-            <span
-              aria-hidden="true"
-              className="grid size-9 place-items-center rounded-full bg-brand font-display text-brand-contrast"
-            >
-              DV
-            </span>
-            <span className="font-display text-lg tracking-tight">Church admin</span>
-          </Link>
+    <div className="min-h-dvh bg-ground lg:grid lg:grid-cols-[17rem_minmax(0,1fr)]">
+      <AdminSidebar groups={groups} email={session.email} signOut={signOut} />
 
-          <div className="flex items-center gap-3 text-sm">
-            <Link
-              href="/en"
-              target="_blank"
-              className="text-ink-muted underline underline-offset-4 hover:text-ink"
-            >
-              View site
-            </Link>
-            <span className="hidden text-ink-faint sm:inline">{session.email}</span>
-            <form action={signOut}>
-              <button
-                type="submit"
-                className="rounded-full border border-line px-4 py-1.5 transition-colors hover:bg-surface-2"
-              >
-                Sign out
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <nav aria-label="Admin" className="mx-auto max-w-6xl px-5">
-          <ul className="-mb-px flex gap-1 overflow-x-auto pb-0 text-sm">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-block whitespace-nowrap px-3 py-2.5 text-ink-muted transition-colors hover:text-ink"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </header>
-
-      <main className="mx-auto max-w-6xl px-5 py-10">{children}</main>
+      <div className="min-w-0">
+        <main className="mx-auto max-w-5xl px-5 py-8 lg:px-10 lg:py-12">{children}</main>
+      </div>
     </div>
   );
 }

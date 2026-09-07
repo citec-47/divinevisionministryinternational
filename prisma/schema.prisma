@@ -1,9 +1,9 @@
-// Divine Vision Ministry International — content and admin database.
+// Divine Vision Ministry International, content and admin database.
 //
 // Bilingual strategy: every field a visitor reads exists as `<field>En` and
 // `<field>Fr`. French is nullable and falls back to English at read time, so the
 // site is never blank while translation is still being filled in. This beats a
-// translations join table at this size — one row is one sermon, in both
+// translations join table at this size, one row is one sermon, in both
 // languages, editable on one admin screen.
 
 generator client {
@@ -153,8 +153,8 @@ model Sermon {
   scriptures String[] @default([])
 
   imageUrl   String?
-  /// Alt text for screen readers. A person's photo needs none — their name is
-  /// the alt — but a scene does.
+  /// Alt text for screen readers. A person's photo needs none, their name is
+  /// the alt, but a scene does.
   imageAltEn String?
   imageAltFr String?
   videoUrl String?

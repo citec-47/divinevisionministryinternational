@@ -20,7 +20,7 @@ export default async function EditSeriesPage({
     <div className="space-y-8">
       <AdminHeader
         title="Edit series"
-        description="Deleting a series never deletes its sermons — they simply stop being grouped."
+        description="Deleting a series never deletes its sermons. They simply stop being grouped."
       />
 
       <SeriesForm

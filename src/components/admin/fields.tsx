@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 /**
  * The admin form kit.
  *
- * Written for the person who will actually use it — a church administrator on a
- * laptop, once a week — so labels are plain words, every French field is
+ * Written for the person who will actually use it, a church administrator on a
+ * laptop, once a week, so labels are plain words, every French field is
  * explicitly optional, and nothing requires knowing what a slug is.
  */
 
@@ -108,7 +108,7 @@ export function BilingualField({
           name={`${name}Fr`}
           defaultValue={defaultFr}
           rows={rows}
-          hint="Optional — falls back to English."
+          hint="Optional. Falls back to English."
         />
       </div>
     </fieldset>

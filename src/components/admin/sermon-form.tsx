@@ -92,7 +92,7 @@ export function SermonForm({
             name="speakerId"
             defaultValue={values.speakerId}
             options={[
-              { value: "", label: "— Not set —" },
+              { value: "", label: "(not set)" },
               ...speakers.map((speaker) => ({ value: speaker.id, label: speaker.name })),
             ]}
           />
@@ -101,7 +101,7 @@ export function SermonForm({
             name="seriesId"
             defaultValue={values.seriesId}
             options={[
-              { value: "", label: "— Not in a series —" },
+              { value: "", label: "(not in a series)" },
               ...series.map((item) => ({ value: item.id, label: item.title })),
             ]}
           />

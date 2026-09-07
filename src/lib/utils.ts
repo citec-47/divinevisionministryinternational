@@ -1,7 +1,7 @@
 import { INTL_LOCALE, type Locale } from "./i18n";
 import type { ServiceTime, SiteSettings } from "./types";
 
-/** Minimal class joiner. Not tailwind-merge — order your classes deliberately. */
+/** Minimal class joiner. Not tailwind-merge, order your classes deliberately. */
 export function cn(...parts: (string | false | null | undefined)[]): string {
   return parts.filter(Boolean).join(" ");
 }
@@ -248,7 +248,7 @@ export function formatMonthYear(iso: string, locale: Locale): string {
 
 /**
  * Money. XAF has no minor unit, so francs are whole numbers and showing
- * ".00" would be wrong — `Intl` already knows this, we just must not override it.
+ * ".00" would be wrong, `Intl` already knows this, we just must not override it.
  */
 export function formatCurrency(amount: number, currency: string, locale: Locale): string {
   try {
@@ -304,7 +304,7 @@ export function mapsUrl(settings: SiteSettings): string {
 }
 
 /**
- * WhatsApp is the primary way people reach a church in Cameroon — more than
+ * WhatsApp is the primary way people reach a church in Cameroon, more than
  * email, and more than a phone call. Every contact point on the site offers it.
  */
 export function whatsappUrl(settings: SiteSettings, message?: string): string | null {

@@ -6,7 +6,7 @@ import type { SiteSettings } from "./types";
  *
  * The header, footer, and every page's metadata need settings to render at all,
  * so a database blip would otherwise take the whole site down. These values are
- * the real ones — a visitor who hits the site during an outage still gets the
+ * the real ones, so a visitor who hits the site during an outage still gets the
  * right name, the right city, and a working WhatsApp link.
  *
  * Everything else (sermons, events, ministries) degrades to an empty state

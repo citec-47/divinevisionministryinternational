@@ -103,7 +103,7 @@ export function MinistryForm({
             name="leaderId"
             defaultValue={values.leaderId}
             options={[
-              { value: "", label: "— Not set —" },
+              { value: "", label: "(not set)" },
               ...leaders.map((leader) => ({ value: leader.id, label: leader.name })),
             ]}
           />

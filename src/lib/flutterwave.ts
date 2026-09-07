@@ -6,8 +6,8 @@ import "server-only";
  * how people here really pay. Stripe cannot pay out to a Cameroonian entity at
  * all, so it was never an option.
  *
- * Only two calls are needed — create a hosted payment link, and verify a
- * transaction after the fact — so this talks to the REST API directly instead
+ * Only two calls are needed, create a hosted payment link, and verify a
+ * transaction after the fact, so this talks to the REST API directly instead
  * of pulling in an SDK.
  */
 const API_BASE = "https://api.flutterwave.com/v3";
@@ -89,8 +89,8 @@ export type VerifiedTransaction = {
 /**
  * Confirms a transaction with Flutterwave directly.
  *
- * Never trust the browser's redirect parameters or a webhook body on their own
- * — both are attacker-controllable. The amount and currency are checked against
+ * Never trust the browser's redirect parameters or a webhook body on their own,
+ * because both are attacker-controllable. The amount and currency are checked against
  * what we recorded before the redirect.
  */
 export async function verifyTransaction(transactionId: string): Promise<VerifiedTransaction> {

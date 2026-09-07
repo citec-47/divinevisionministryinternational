@@ -65,7 +65,7 @@ export function NextServiceNotice({
   if (isServiceLive(settings, now)) {
     return (
       <p className={cn("text-sm font-medium text-live", className)}>
-        {dict.live.happeningNow} —{" "}
+        {dict.live.happeningNow},{" "}
         <Link href={localePath(locale, "/live")} className="underline underline-offset-4">
           {dict.live.watchLive}
         </Link>
@@ -89,7 +89,7 @@ export function NextServiceNotice({
       <span className="font-medium text-ink">
         {when} {dict.live.at} {formatClockTime(next.service.startTime, locale)}
       </span>{" "}
-      — {next.service.label}
+      , {next.service.label}
     </p>
   );
 }

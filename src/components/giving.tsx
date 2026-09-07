@@ -306,7 +306,7 @@ function CopyRow({
 /**
  * Mobile Money and bank details.
  *
- * For most givers in Yaoundé this is the whole giving page — a MoMo transfer
+ * For most givers in Yaoundé this is the whole giving page. A MoMo transfer
  * costs them nothing in card fees and takes ten seconds. The card checkout
  * above is the secondary path, not the primary one.
  */

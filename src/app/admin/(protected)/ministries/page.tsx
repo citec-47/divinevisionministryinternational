@@ -27,8 +27,8 @@ export default async function AdminMinistriesPage() {
                 <p className="font-medium">{ministry.titleEn}</p>
                 <p className="text-xs text-ink-faint">{ministry.summaryEn}</p>
               </td>
-              <td className="px-5 py-3 text-ink-muted">{ministry.audienceEn ?? "—"}</td>
-              <td className="px-5 py-3 text-ink-muted">{ministry.leader?.name ?? "—"}</td>
+              <td className="px-5 py-3 text-ink-muted">{ministry.audienceEn ?? "-"}</td>
+              <td className="px-5 py-3 text-ink-muted">{ministry.leader?.name ?? "-"}</td>
               <td className="px-5 py-3 text-ink-muted">{ministry.sortOrder}</td>
               <td className="px-5 py-3 text-right">
                 <Link
@@ -44,7 +44,7 @@ export default async function AdminMinistriesPage() {
       ) : (
         <AdminEmpty
           title="No ministries yet"
-          description="Add the groups people can join — kids, youth, worship, outreach."
+          description="Add the groups people can join: kids, youth, worship, outreach."
           action={<PrimaryLink href="/admin/ministries/new">Add a ministry</PrimaryLink>}
         />
       )}

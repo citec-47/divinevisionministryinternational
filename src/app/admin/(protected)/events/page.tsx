@@ -53,7 +53,7 @@ export default async function AdminEventsPage() {
                     {event._count.registrations}
                   </Link>
                 ) : (
-                  <span className="text-ink-faint">—</span>
+                  <span className="text-ink-faint">-</span>
                 )}
               </td>
               <td className="px-5 py-3">

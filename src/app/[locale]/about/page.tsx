@@ -74,8 +74,8 @@ export default async function AboutPage({
               <p>{settings.description}</p>
               <p>
                 {locale === "fr"
-                  ? "Notre vie commune tient en trois choses : le culte du dimanche, des groupes où l’on connaît les gens par leur nom, et un service concret dans notre ville — vivres, vêtements et présence auprès de ceux qui en ont besoin."
-                  : "Our life together holds three things: Sunday worship, groups small enough to know people by name, and practical service in our city — food, clothing, and presence for those who need it."}
+                  ? "Notre vie commune tient en trois choses : le culte du dimanche, des groupes où l’on connaît les gens par leur nom, et un service concret dans notre ville, des vivres et des vêtements à la présence auprès de ceux qui en ont besoin."
+                  : "Our life together holds three things: Sunday worship, groups small enough to know people by name, and practical service in our city, from food and clothing to presence for those who need it."}
               </p>
             </div>
           </div>

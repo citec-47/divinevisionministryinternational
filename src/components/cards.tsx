@@ -10,8 +10,8 @@ import { Card, ImageFallback, Pill } from "./ui";
 /**
  * Renders a content image, or a generated gradient when there is none.
  *
- * A church CMS regularly has records without artwork — a sermon uploaded on
- * Monday morning, a ministry nobody has photographed yet — and those should
+ * A church CMS regularly has records without artwork (a sermon uploaded on
+ * Monday morning, a ministry nobody has photographed yet) and those should
  * still look deliberate rather than broken.
  */
 export function ContentImage({

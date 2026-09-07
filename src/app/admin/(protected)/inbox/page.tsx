@@ -13,7 +13,7 @@ function when(date: Date): string {
   });
 }
 
-/** A plain server-action form — no client JavaScript needed to tick something off. */
+/** A plain server-action form, no client JavaScript needed to tick something off. */
 function HandledToggle({
   kind,
   id,
@@ -112,7 +112,7 @@ export default async function AdminInboxPage() {
                     <p className="font-medium">
                       {message.name}
                       {message.subject ? (
-                        <span className="text-ink-muted"> — {message.subject}</span>
+                        <span className="text-ink-muted">: {message.subject}</span>
                       ) : null}
                     </p>
                     <p className="text-xs text-ink-faint">{when(message.createdAt)}</p>
@@ -158,7 +158,7 @@ export default async function AdminInboxPage() {
                   <div>
                     <p className="font-medium">
                       {registration.name}
-                      <span className="text-ink-muted"> — {registration.eventTitle}</span>
+                      <span className="text-ink-muted">: {registration.eventTitle}</span>
                     </p>
                     <p className="text-xs text-ink-faint">
                       {when(registration.createdAt)} · {registration.guests} attending

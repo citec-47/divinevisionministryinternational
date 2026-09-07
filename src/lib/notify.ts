@@ -8,7 +8,7 @@ import "server-only";
  * bounced email never loses somebody's prayer request. It only decides whether
  * anyone gets pinged about it tonight or sees it in /admin tomorrow.
  *
- * Uses Resend's REST API directly rather than the SDK — one less dependency for
+ * Uses Resend's REST API directly rather than the SDK, one less dependency for
  * a single POST.
  */
 export async function notifyOffice(

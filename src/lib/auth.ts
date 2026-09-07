@@ -9,7 +9,7 @@ import { prisma } from "./db";
 /**
  * Admin session handling.
  *
- * A signed, httpOnly JWT cookie — no session table to keep, and it survives
+ * A signed, httpOnly JWT cookie, no session table to keep, and it survives
  * serverless cold starts. Only church staff ever authenticate; visitors never
  * have accounts, by design.
  */
